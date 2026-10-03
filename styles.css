@@ -107,10 +107,20 @@ h2 {
   transition: transform 500ms cubic-bezier(.2, .8, .2, 1), filter 500ms ease;
   filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.16));
 }
-.dragon-wing { transform-box: fill-box; transform-origin: 90% 90%; }
-.crest-heart { transform-box: fill-box; transform-origin: center; }
-.crest-star { transform-box: fill-box; transform-origin: center; }
+.crest-wing {
+  transform-box: fill-box;
+  transform-origin: 100% 82%;
+  animation: crest-wing-reveal 1.4s cubic-bezier(.2, .8, .2, 1) both;
+  filter: drop-shadow(0 7px 4px rgba(5, 3, 10, 0.78)) drop-shadow(0 -1px 1px rgba(223, 203, 231, 0.2));
+}
+.crest-wing--right { animation-delay: 180ms; }
+.crest-rune { transform-box: fill-box; transform-origin: center; }
+.crest-particle { transform-box: fill-box; transform-origin: center; }
 .crest:hover { filter: drop-shadow(0 16px 30px rgba(180, 142, 240, 0.22)); }
+@keyframes crest-wing-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 .hero-dates {
   display: flex;
   flex-wrap: wrap;
@@ -428,6 +438,7 @@ h2 {
   .anim { animation: none !important; }
   .env-flap { transition: none; }
   .crest { transition: none; transform: none; }
+  .crest-wing { animation: none; }
   html { scroll-behavior: auto; }
 }
 

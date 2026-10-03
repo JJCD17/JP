@@ -50,33 +50,33 @@ document.addEventListener('DOMContentLoaded', () => {
     animations.push(animation);
   }
 
-  crest.querySelectorAll('.dragon-wing').forEach((wing, index) => {
+  crest.querySelectorAll('.crest-wing').forEach((wing, index) => {
     addAnimation(wing, [
-      { transform: 'rotate(-3deg)' },
-      { transform: 'rotate(5deg)' },
-      { transform: 'rotate(-3deg)' }
+      { transform: 'rotate(-0.7deg)' },
+      { transform: 'rotate(0.9deg)' },
+      { transform: 'rotate(-0.7deg)' }
     ], {
-      duration: 2600 + index * 180,
-      delay: index * 220,
+      duration: 5200 + index * 320,
+      delay: 450 + index * 280,
       iterations: Infinity,
       easing: 'ease-in-out'
     });
   });
 
-  addAnimation(crest.querySelector('.crest-heart'), [
-    { transform: 'scale(1)' },
-    { transform: 'scale(1.14)' },
-    { transform: 'scale(1)' }
-  ], { duration: 1700, iterations: Infinity, easing: 'ease-in-out' });
+  addAnimation(crest.querySelector('.crest-rune'), [
+    { opacity: 0.68, transform: 'scale(.96)' },
+    { opacity: 1, transform: 'scale(1.04)' },
+    { opacity: 0.68, transform: 'scale(.96)' }
+  ], { duration: 4200, iterations: Infinity, easing: 'ease-in-out' });
 
-  crest.querySelectorAll('.crest-star').forEach((star, index) => {
-    addAnimation(star, [
-      { opacity: 0.45, transform: 'scale(.7)' },
-      { opacity: 1, transform: 'scale(1.45)' },
-      { opacity: 0.45, transform: 'scale(.7)' }
+  crest.querySelectorAll('.crest-particle').forEach((particle, index) => {
+    addAnimation(particle, [
+      { opacity: 0.25, transform: 'translateY(2px) scale(.8)' },
+      { opacity: 0.82, transform: 'translateY(-4px) scale(1.08)' },
+      { opacity: 0.25, transform: 'translateY(2px) scale(.8)' }
     ], {
-      duration: 1500 + index * 260,
-      delay: index * 360,
+      duration: 3600 + index * 500,
+      delay: 700 + index * 650,
       iterations: Infinity,
       easing: 'ease-in-out'
     });
