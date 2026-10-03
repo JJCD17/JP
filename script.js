@@ -20,6 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  document.querySelectorAll('.chapter-photo img[data-photo]').forEach((image) => {
+    image.addEventListener('load', () => {
+      image.closest('.chapter-photo').classList.add('has-photo');
+    }, { once: true });
+    image.src = image.dataset.photo;
+  });
+
+  const daysTogether = document.getElementById('days-together');
+  if (daysTogether) {
+    const start = new Date(2026, 4, 1);
+    const today = new Date();
+    const startDay = Date.UTC(start.getFullYear(), start.getMonth(), start.getDate());
+    const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const elapsedDays = Math.max(0, Math.floor((todayDay - startDay) / 86400000) + 1);
+    daysTogether.textContent = elapsedDays.toLocaleString('es-MX');
+  }
+
   const crest = document.querySelector('.crest');
   if (!crest || !crest.animate) return;
 
