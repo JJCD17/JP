@@ -180,19 +180,29 @@ h2 {
 .counter-heading h2 { font-size: 32px; }
 .together-count {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 22px);
+  width: 100%;
   margin: 5px 0 0;
   color: var(--rosa);
   font-family: var(--font-titulo);
 }
-.together-count span:first-child {
-  font-size: 88px;
+.together-time-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: clamp(66px, 13vw, 118px);
+  gap: 3px;
+}
+.together-value {
+  font-size: clamp(38px, 8vw, 76px);
   font-weight: 700;
   line-height: 1;
   text-shadow: 0 0 32px rgba(242, 141, 187, 0.2);
 }
-.together-unit { color: var(--lavanda); font-size: 20px; }
+.together-unit { color: var(--lavanda); font-family: var(--font-texto); font-size: clamp(15px, 2vw, 20px); }
+.together-separator { align-self: flex-start; padding-top: 3px; color: var(--morado); font-size: clamp(28px, 5vw, 44px); line-height: .9; }
 .together-note { color: var(--texto-suave); font-size: 20px; font-style: italic; }
 .counter {
   position: relative;
@@ -238,7 +248,11 @@ h2 {
   .together-counter { padding: 46px 20px 42px; }
   .together-counter::before,
   .together-counter::after { width: 12vw; }
-  .together-count span:first-child { font-size: 72px; }
+  .together-count { gap: 6px; }
+  .together-time-part { min-width: 0; flex: 1; }
+  .together-value { font-size: clamp(28px, 8vw, 38px); }
+  .together-unit { font-size: 12px; }
+  .together-separator { padding-top: 2px; font-size: 20px; }
   .together-counter h2,
   .counter-heading h2 { font-size: 27px; }
   .counter { padding: 40px 20px 46px; }

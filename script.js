@@ -28,13 +28,30 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const daysTogether = document.getElementById('days-together');
-  if (daysTogether) {
-    const start = new Date(2026, 4, 1);
-    const today = new Date();
-    const startDay = Date.UTC(start.getFullYear(), start.getMonth(), start.getDate());
-    const todayDay = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
-    const elapsedDays = Math.max(0, Math.floor((todayDay - startDay) / 86400000) + 1);
-    daysTogether.textContent = elapsedDays.toLocaleString('es-MX');
+  const hoursTogether = document.getElementById('hours-together');
+  const minutesTogether = document.getElementById('minutes-together');
+  const secondsTogether = document.getElementById('seconds-together');
+
+  if (daysTogether && hoursTogether && minutesTogether && secondsTogether) {
+    const start = new Date(2026, 4, 1, 6, 30, 0); //año, mes, día, hora, minuto, segundo
+    const second = 1000;
+
+    function updateTogetherTime() {
+      const elapsed = Math.max(0, Date.now() - start.getTime());
+      const totalSeconds = Math.floor(elapsed / second);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      daysTogether.textContent = days.toLocaleString('es-MX');
+      hoursTogether.textContent = String(hours).padStart(2, '0');
+      minutesTogether.textContent = String(minutes).padStart(2, '0');
+      secondsTogether.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateTogetherTime();
+    window.setInterval(updateTogetherTime, second);
   }
 
   const crest = document.querySelector('.crest');
